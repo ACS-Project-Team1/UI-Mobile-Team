@@ -17,8 +17,9 @@ const {primary, secondary, tertiary, darkLight} = Colors;
 export const StyledContainer = styled.View`
 flex : 1;
 padding : 25px;
-padding-top: 100px;
-
+padding-top: 90px;
+backgroundColor:white;
+height:100vh;
 `
 
 export const InnerContainer = styled.View`
