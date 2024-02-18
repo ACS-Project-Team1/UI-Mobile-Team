@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { StatusBar } from 'expo-status-bar';
+import { View } from "react-native";
 
 // formik
 import { Formik } from "formik";
@@ -7,8 +8,7 @@ import { Formik } from "formik";
 // icons
 import { Octicons, Ionicons } from "@expo/vector-icons"
 
-import { StyledContainer, InnerContainer, PageLogo, PageTitle, SubTitle, StyledFormArea, LeftIcon, StyledInputLabel, StyledTextInput, RightIcon, StyledButton, ButtonText, Colors, MsgBox, ExtraView, ExtraText, TextLink, TextLinkContent } from "../components/styles";
-import { View } from "react-native";
+import { StyledContainer, InnerContainer, PageLogo, SubTitle, StyledFormArea, LeftIcon, StyledInputLabel, StyledTextInput, RightIcon, StyledButton, ButtonText, Colors, MsgBox, ExtraView, ExtraText, TextLink, TextLinkContent } from "../components/styles";
 
 // keyboard avoiding view
 import KeyboardAvoidingWrapper from "../components/KeyboardAvoidingWrapper";
@@ -16,11 +16,10 @@ import KeyboardAvoidingWrapper from "../components/KeyboardAvoidingWrapper";
 // colors
 const { primary, darkLight } = Colors
 
-
 const Login = ({ navigation }) => {
     const [hidePassword, setHidePassword] = useState(true);
 
-  
+
     return (
         <KeyboardAvoidingWrapper>
             <StyledContainer>
@@ -40,19 +39,18 @@ const Login = ({ navigation }) => {
                                 placeholder="anna@gmail.com"
                                 placeholderTextColor={darkLight}
                                 onChangeText={handleChange('email')}
-                                onBlur={handleChange('email')}
+                                onBlur={handleBlur('email')}
                                 value={values.email}
                                 keyboardType="email-address"
 
                             />
-
                             <MyTextInput
                                 label="Password"
                                 icon="lock"
                                 placeholder="* * * * * * * *"
                                 placeholderTextColor={darkLight}
                                 onChangeText={handleChange('password')}
-                                onBlur={handleChange('password')}
+                                onBlur={handleBlur('password')}
                                 value={values.password}
                                 secureTextEntry={hidePassword}
                                 isPassword={true}

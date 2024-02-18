@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import { StatusBar } from 'expo-status-bar';
+import { View } from "react-native";
 
 // formik
 import { Formik } from "formik";
 
 // icons
 import { Octicons, Ionicons } from "@expo/vector-icons"
-
-import { StyledContainer, InnerContainer, PageLogo, PageTitle, SubTitle, StyledFormArea, LeftIcon, StyledInputLabel, StyledTextInput, RightIcon, StyledButton, ButtonText, Colors, MsgBox, ExtraView, ExtraText, TextLink, TextLinkContent } from "../components/styles";
-import { View } from "react-native";
+import { StyledContainer, InnerContainer, PageLogo, SubTitle, StyledFormArea, LeftIcon, StyledInputLabel, StyledTextInput, RightIcon, StyledButton, ButtonText, Colors, MsgBox, ExtraView, ExtraText, TextLink, TextLinkContent } from "../components/styles";
 import KeyboardAvoidingWrapper from "../components/KeyboardAvoidingWrapper";
 
 // colors
 const { primary, darkLight } = Colors
-
 
 const Signup = ({ navigation }) => {
     const [hidePassword, setHidePassword] = useState(true);
@@ -38,7 +36,7 @@ const Signup = ({ navigation }) => {
                                 placeholder="Ann"
                                 placeholderTextColor={darkLight}
                                 onChangeText={handleChange('fname')}
-                                onBlur={handleChange('fname')}
+                                onBlur={handleBlur('fname')}
                                 value={values.fname}
                             />
                             <MyTextInput
@@ -47,7 +45,7 @@ const Signup = ({ navigation }) => {
                                 placeholder="Array"
                                 placeholderTextColor={darkLight}
                                 onChangeText={handleChange('lname')}
-                                onBlur={handleChange('lname')}
+                                onBlur={handleBlur('lname')}
                                 value={values.lname}
                             />
                             <MyTextInput
@@ -56,7 +54,7 @@ const Signup = ({ navigation }) => {
                                 placeholder="anna@gmail.com"
                                 placeholderTextColor={darkLight}
                                 onChangeText={handleChange('email')}
-                                onBlur={handleChange('email')}
+                                onBlur={handleBlur('email')}
                                 value={values.email}
                                 keyboardType="email-address"
                             />
@@ -66,7 +64,7 @@ const Signup = ({ navigation }) => {
                                 placeholder="* * * * * * * *"
                                 placeholderTextColor={darkLight}
                                 onChangeText={handleChange('password')}
-                                onBlur={handleChange('password')}
+                                onBlur={handleBlur('password')}
                                 value={values.password}
                                 secureTextEntry={hidePassword}
                                 isPassword={true}
