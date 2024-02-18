@@ -20,6 +20,7 @@ const { primary, darkLight } = Colors
 const Login = ({ navigation }) => {
     const [hidePassword, setHidePassword] = useState(true);
 
+  
     return (
         <KeyboardAvoidingWrapper>
             <StyledContainer>
@@ -30,6 +31,7 @@ const Login = ({ navigation }) => {
                     <Formik initialValues={{ email: '', password: '' }}
                         onSubmit={(values) => {
                             console.log(values)
+                            navigation.navigate("Home")
                         }}>
                         {({ handleChange, handleBlur, handleSubmit, values }) => <StyledFormArea>
                             <MyTextInput
