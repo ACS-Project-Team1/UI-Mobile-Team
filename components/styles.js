@@ -1,18 +1,18 @@
 import styled from "styled-components";
 import { View, Image, Text, TextInput, TouchableOpacity } from "react-native";
-import Constants  from "expo-constants";
+import Constants from "expo-constants";
 
 const StatusBarHeight = Constants.StatusBarHeight;
 
 //colors
 export const Colors = {
-    primary:"#008EB0",
-    secondary:"#D1EAFB",
-    tertiary:" #000000",
-    darkLight:"#75736d"
+    primary: "#008EB0",
+    secondary: "#D1EAFB",
+    tertiary: " #000000",
+    darkLight: "#75736d"
 };
 
-const {primary, secondary, tertiary, darkLight} = Colors;
+const { primary, secondary, tertiary, darkLight } = Colors;
 
 export const StyledContainer = styled.View`
 flex : 1;
@@ -25,7 +25,14 @@ height:100vh;
 export const InnerContainer = styled.View`
     flex:1;
     width:100%;
+    height:100%;
     align-items:center;
+`;
+
+export const WelcomeContainer = styled(InnerContainer)`
+    justify-content : center;
+    background-color: ${primary};
+    border-radius : 0 0 50px 50px;
 `;
 
 export const PageLogo = styled.Image`
@@ -34,12 +41,34 @@ export const PageLogo = styled.Image`
  margin-right:25px;
 `;
 
+export const Avatar = styled.Image`
+    width : 100px;
+    height: 100px;
+    margin: auto;
+    border-radius: 50px;
+    border-width: 2px;
+    border-color: ${primary};
+    margin-bottom : 10px;
+    margin-top:10px;
+`;
+
+export const WelcomeImage = styled.Image`
+    height: 50%;
+    min-width : 100%;
+`;
+
 export const PageTitle = styled.Text`
     font-size:30px;
     text-align: center;
     font-weight : bold;
     color : ${primary};
     padding:10px;
+
+    ${(props) => props.welcome && `
+  font-size: 35px;
+  color : #ffff
+    
+    `}
 `;
 
 export const SubTitle = styled.Text`
@@ -48,6 +77,12 @@ export const SubTitle = styled.Text`
     letter-spacing : 1px;
     font-weight : bold;
     color :${tertiary}
+
+    ${(props) => props.welcome && `
+    margin-bottom : 5px;
+    font-weight: normal;
+    
+    `}
 
 `;
 
@@ -66,14 +101,12 @@ height:60px;
 margin-vertical : 3px;
 margin-bottom : 10px;
 color : ${darkLight}
-
 `;
 
 export const StyledInputLabel = styled.Text`
 color : ${tertiary};
 font-size: 13px;
 text-align : left;
-
 `;
 
 export const LeftIcon = styled.View`
@@ -102,9 +135,24 @@ export const StyledButton = styled.TouchableOpacity`
     margin-bottom : 15px;
 `;
 
+export const StyledButtonSecondary = styled(StyledButton)`
+    background-color: ${secondary};
+    width: 70%;
+`;
+
+export const StyledButtonHome = styled(StyledButton)`
+    width : 70%;
+`;
+
 export const ButtonText = styled.Text`
     color : #ffff;
     font-size: 16px;
+    font-weight : 600;
+`;
+
+export const ButtonTextSecondary = styled(ButtonText)`
+    color : ${primary}
+
 `;
 
 export const MsgBox = styled.Text`
@@ -140,4 +188,12 @@ export const TextLinkContent = styled.Text`
     font-weight:600;
 `;
 
+export const ButtonContainer = styled.View`
+    width : 100%;
+    display: flex;
+    align-items : center;
+    justify-content : center;
+    margin-top: 20px;
+    margin-bottom : 90px;
+`;
 
