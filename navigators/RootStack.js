@@ -8,6 +8,7 @@ import { Colors } from '../components/styles';
 import Login from '../screens/Login';
 import Signup from '../screens/Signup';
 import Home from '../screens/Home';
+import Welcome from '../screens/Welcome';
 
 const { tertiary } = Colors;
 const Stack = createNativeStackNavigator();
@@ -27,11 +28,12 @@ const RootStack = () => {
                         paddingLeft: 20
                     }
                 }}
-                initialRouteName="Login"
+                initialRouteName="Welcome"
             >
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Signup" component={Signup} />
                 <Stack.Screen name="Home" component={Home} />
+                <Stack.Screen name="Welcome" component={Welcome} />
             </Stack.Navigator>
         </NavigationContainer>
     )
