@@ -4,6 +4,16 @@ import Constants from "expo-constants";
 
 const StatusBarHeight = Constants.StatusBarHeight;
 
+const Montserrat_Thin =  'Montserrat_100Thin';
+const Montserrat_ExtraLight = 'Montserrat_200ExtraLight';
+const Montserrat_Light =    'Montserrat_300Light';
+const Montserrat_Regular =    'Montserrat_400Regular';
+const Montserrat_Medium =    'Montserrat_500Medium';
+const Montserrat_SemiBold  =  'Montserrat_600SemiBold';
+const Montserrat_Bold   = 'Montserrat_700Bold';
+const Montserrat_ExtraBold   = 'Montserrat_800ExtraBold';
+const Montserrat_Black  =  'Montserrat_900Black';
+
 //colors
 export const Colors = {
     primary: "#008EB0",
@@ -36,9 +46,15 @@ export const WelcomeContainer = styled(InnerContainer)`
 `;
 
 export const PageLogo = styled.Image`
- margin-top: 20px;
- margin-bottom: 30px;
- margin-right:25px;
+margin-top: 20px;
+margin-bottom: 30px;
+`;
+
+export const WelcomeLogo = styled.Image`
+ margin:5%;
+ flex: 1;
+ width:80%;
+ height:80%;
 `;
 
 export const Avatar = styled.Image`
@@ -58,21 +74,24 @@ export const WelcomeImage = styled.Image`
 `;
 
 export const PageTitle = styled.Text`
+    font-family:${Montserrat_Bold};
     font-size:30px;
     text-align: center;
     font-weight : bold;
     color : ${primary};
     padding:10px;
+    padding-top:40%;
 
     ${(props) => props.welcome && `
-  font-size: 35px;
+  font-size: 27px;
   color : #ffff
     
     `}
 `;
 
 export const SubTitle = styled.Text`
-    font-size:18px;
+    font-family:${Montserrat_Bold};
+    font-size:25px;
     margin-bottom : 20px;
     letter-spacing : 1px;
     font-weight : bold;
@@ -145,8 +164,9 @@ export const StyledButtonHome = styled(StyledButton)`
 `;
 
 export const ButtonText = styled.Text`
+    font-family:${Montserrat_SemiBold};
     color : #ffff;
-    font-size: 16px;
+    font-size: 20px;
     font-weight : 600;
 `;
 
