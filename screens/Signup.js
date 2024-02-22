@@ -73,7 +73,7 @@ const Signup = ({ navigation }) => {
                             />
                             <StyledButton onPress={handleSubmit}>
                                 <ButtonText>
-                                    Signup
+                                    SIGNUP
                                 </ButtonText>
                             </StyledButton>
                             <ExtraView>

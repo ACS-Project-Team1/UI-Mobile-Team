@@ -1,13 +1,13 @@
 import React from 'react'
-import { ButtonContainer, ButtonText, ButtonTextSecondary, InnerContainer, PageLogo, PageTitle, StyledButton, StyledButtonHome, StyledButtonSecondary, SubTitle, WelcomeContainer } from '../components/styles'
+import { ButtonContainer, ButtonText, ButtonTextSecondary, InnerContainer, PageLogo, PageTitle, StyledButton, StyledButtonHome, StyledButtonSecondary, SubTitle, WelcomeContainer, WelcomeLogo } from '../components/styles'
 
 const Welcome = ({ navigation }) => {
     return (
         <>
             <InnerContainer>
                 <WelcomeContainer>
-                    <PageTitle welcome={true}>Welcome to Golf Pro</PageTitle>
-                    <PageLogo resizeMode="cover" source={require('./../assets/images/home.png')} />
+                    <PageTitle welcome={true}>WELCOME TO GOLF PRO</PageTitle>
+                    <WelcomeLogo resizeMode="cover" source={require('./../assets/images/home.png')} />
                 </WelcomeContainer>
                 <ButtonContainer>
                     <StyledButtonHome onPress={() => navigation.navigate("Login")}>

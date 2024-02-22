@@ -59,7 +59,7 @@ const Login = ({ navigation }) => {
                             />
                             <StyledButton onPress={handleSubmit}>
                                 <ButtonText>
-                                    Login
+                                    LOGIN
                                 </ButtonText>
                             </StyledButton>
                             <ExtraView>
