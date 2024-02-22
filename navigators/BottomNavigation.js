@@ -5,13 +5,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from "@expo/vector-icons"
 
-import Dashboard from '../screens/afterLogin/Dashboard';
-import Leagues from '../screens/afterLogin/Leagues';
-import Profile from '../screens/afterLogin/Profile';
-import Stats from '../screens/afterLogin/Stats';
-import Teams from '../screens/afterLogin/Teams';
+import Dashboard from '../screens/afterLogin/Dashboard.js';
+import Leagues from '../screens/afterLogin/Leagues.js';
+import Profile from '../screens/afterLogin/Profile.js';
+import Stats from '../screens/afterLogin/Stats.js';
+import Teams from '../screens/afterLogin/Teams.js';
 
 import { bottomNavStyles } from '../components/bottomNavStyles.js';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { PageLogo } from '../components/styles.js';
 
 const dashboardName = 'Home';
 const leaguesName = 'Leagues';
@@ -20,15 +22,15 @@ const statsName = 'Stats';
 const profileName = 'Profile';
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 
-export default function BottomNavigationContainer(){
+export default function BottomNavigation(){
   return (
-    <NavigationContainer>
       <Tab.Navigator
         initialRouteName={dashboardName}
         screenOptions={({ route }) => ({
-          
+          headerShown:false,
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
             const rn = route.name;
@@ -49,37 +51,28 @@ export default function BottomNavigationContainer(){
             // when the route is leaguesName or any other specific route
             // if (rn === leaguesName) return null;
 
-            return <Ionicons name={iconName} size={size} color={color} />;
+            return(
+              <View style={focused?[bottomNavStyles.navbar_button,bottomNavStyles.navbar_button_active]:bottomNavStyles.navbar_button}>
+                <Ionicons name={iconName} size={size} color={color} />
+                <Text style={focused ? bottomNavStyles.label_active : bottomNavStyles.label}>{route.name}</Text>
+              </View>
+            );
           },
           tabBarActiveTintColor: 'white',
           tabBarInactiveTintColor: 'white',
-          tabBarStyle:styles.tabBar,
-          tabBarLabelStyle:styles.label,
+          tabBarStyle:bottomNavStyles.tabBar,
+          tabBarLabel:() => null,
 
         })}
       >
         <Tab.Screen name={dashboardName} component={Dashboard} />
-        <Tab.Screen name={leaguesName} component={Leagues} />
         <Tab.Screen name={teamsName} component={Teams} />
+        <Tab.Screen name={leaguesName} component={Leagues} />
         <Tab.Screen name={statsName} component={Stats} />
         <Tab.Screen name={profileName} component={Profile} />
       </Tab.Navigator>
-    </NavigationContainer>
-
   );
 };
 
-export const styles = StyleSheet.create({
-  tabBar: {
-    backgroundColor: '#008EB0',
-    height:70,
-    paddingBottom:10,
-    paddingTop:10
-  },
-  label:{
-    fontSize:15,
-    fontWeight:'bold',
-  }
-});
 
 

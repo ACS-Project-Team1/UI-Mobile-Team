@@ -26,7 +26,7 @@ const Signup = ({ navigation }) => {
                     <Formik initialValues={{ fname: '', lname: '', email: '', password: '' }}
                         onSubmit={(values) => {
                             console.log(values)
-                            navigation.navigate("Home")
+                            navigation.navigate("LoggedIn")
                         }}>
                         {({ handleChange, handleBlur, handleSubmit, values }) => <StyledFormArea>
 
