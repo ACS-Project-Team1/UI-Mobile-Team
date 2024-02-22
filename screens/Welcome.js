@@ -1,5 +1,5 @@
 import React from 'react'
-import { ButtonContainer, ButtonText, ButtonTextSecondary, InnerContainer, PageLogo, PageTitle, StyledButton, StyledButtonHome, StyledButtonSecondary, SubTitle, WelcomeContainer, WelcomeLogo } from '../components/styles'
+import { ButtonContainer, ButtonText, ButtonTextSecondary, InnerContainer,  PageTitle, StyledButtonHome, StyledButtonSecondary,  WelcomeContainer, WelcomeLogo } from '../components/styles'
 
 const Welcome = ({ navigation }) => {
     return (
@@ -19,7 +19,6 @@ const Welcome = ({ navigation }) => {
                 </ButtonContainer>
             </InnerContainer>
         </>
-
     )
 }
 

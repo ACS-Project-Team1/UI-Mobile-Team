@@ -28,8 +28,7 @@ export const StyledContainer = styled.View`
 flex : 1;
 padding : 25px;
 padding-top: 90px;
-backgroundColor:white;
-height:100vh;
+margin-bottom:0px;
 `
 
 export const InnerContainer = styled.View`
@@ -37,6 +36,7 @@ export const InnerContainer = styled.View`
     width:100%;
     height:100%;
     align-items:center;
+    background-color:white;
 `;
 
 export const WelcomeContainer = styled(InnerContainer)`
@@ -106,40 +106,48 @@ export const SubTitle = styled.Text`
 `;
 
 export const StyledFormArea = styled.View`
-    width : 90%
+    width : 95%
+`;
+
+export const StyledTextBox = styled.View`
+background-color:${secondary};
+display: flex;
+flex-direction: row;
+align-items: center;
+border-radius:50%;
+height:70px;
+justify-content:space-between;
+margin-bottom:5%;
+`;
+
+export const IconAndInput = styled.View`
+ display: flex;
+flex-direction: row;
+align-items: center;
+  
 `;
 
 export const StyledTextInput = styled.TextInput`
-
-background-color : ${secondary};
-padding : 15px;
-padding-left: 55px;
-border-radius : 50px;
-font-size: 16px;
-height:60px;
-margin-vertical : 3px;
-margin-bottom : 10px;
-color : ${darkLight}
+    width:67%;
+    font-size:18px;
 `;
 
 export const StyledInputLabel = styled.Text`
 color : ${tertiary};
 font-size: 13px;
 text-align : left;
+font-family:${Montserrat_Regular};
 `;
 
 export const LeftIcon = styled.View`
-    left : 15px;
-    top:35px;
-    position: absolute;
-    z-index:1;
+    padding-left:10%;
+    padding-right:5%;
 `;
 
 export const RightIcon = styled.TouchableOpacity`
-    right : 15px;
-    top:35px;
-    position: absolute;
-    z-index:1;
+    margin-right:10%;
+    margin-left:0;
+
 `;
 
 export const StyledButton = styled.TouchableOpacity`
@@ -193,6 +201,7 @@ export const ExtraText = styled.Text`
     align-items: center;
     color : ${tertiary};
     font-size : 16px;
+    font-family:${Montserrat_Regular};
 `;
 
 export const TextLink = styled.TouchableOpacity`
