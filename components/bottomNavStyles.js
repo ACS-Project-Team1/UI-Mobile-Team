@@ -1,7 +1,5 @@
 import { StyleSheet } from "react-native";
 
-
-
 export const bottomNavStyles = StyleSheet.create({
     tabBar: {
         backgroundColor: '#008EB0',
@@ -12,6 +10,7 @@ export const bottomNavStyles = StyleSheet.create({
       label:{
         color:'white',
         fontSize:15,
+        fontFamily:'Montserrat_600SemiBold'
       },
       label_active:{
         color:'white',

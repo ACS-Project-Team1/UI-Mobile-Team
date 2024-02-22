@@ -53,6 +53,7 @@ const styles = StyleSheet.create({
     fontSize: 25, // Adjust font size as needed
     fontWeight: 'bold', // Adjust font weight as needed
     color: '#000', // Adjust text color as needed
+    fontFamily:'Montserrat_700Bold'
   },
 });
 

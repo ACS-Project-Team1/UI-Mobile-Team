@@ -9,6 +9,7 @@ import { Formik } from "formik";
 import { Octicons, Ionicons } from "@expo/vector-icons"
 import { StyledContainer, InnerContainer, PageLogo, SubTitle, StyledFormArea, LeftIcon, StyledInputLabel, StyledTextInput, RightIcon, StyledButton, ButtonText, Colors, MsgBox, ExtraView, ExtraText, TextLink, TextLinkContent } from "../components/styles";
 import KeyboardAvoidingWrapper from "../components/KeyboardAvoidingWrapper";
+import { MyTextInput } from "../components/MyTextInput";
 
 // colors
 const { primary, darkLight } = Colors
@@ -60,7 +61,7 @@ const Signup = ({ navigation }) => {
                             />
                             <MyTextInput
                                 label="Password"
-                                icon="lock"
+                                icon="lock-closed"
                                 placeholder="* * * * * * * *"
                                 placeholderTextColor={darkLight}
                                 onChangeText={handleChange('password')}
@@ -73,7 +74,7 @@ const Signup = ({ navigation }) => {
                             />
                             <StyledButton onPress={handleSubmit}>
                                 <ButtonText>
-                                    Signup
+                                    SIGNUP
                                 </ButtonText>
                             </StyledButton>
                             <ExtraView>
@@ -90,22 +91,5 @@ const Signup = ({ navigation }) => {
     );
 }
 
-const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePassword, ...props }) => {
-    return (
-        <View>
-            <LeftIcon>
-                <Octicons name={icon} size={30} color={primary} />
-            </LeftIcon>
-            <StyledInputLabel>{label}</StyledInputLabel>
-            <StyledTextInput {...props} />
-            {isPassword && (
-                <RightIcon onPress={() => setHidePassword(!hidePassword)}>
-                    <Ionicons name={hidePassword ? 'eye-off-outline' : 'eye-outline'} size={30} color={darkLight} />
-                </RightIcon>
-            )}
-        </View>
-    )
-
-}
 
 export default Signup;
