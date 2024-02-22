@@ -5,15 +5,15 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from "@expo/vector-icons"
 
-import Dashboard from '../screens/afterLogin/Dashboard.js';
-import Leagues from '../screens/afterLogin/Leagues.js';
-import Profile from '../screens/afterLogin/Profile.js';
-import Stats from '../screens/afterLogin/Stats.js';
-import Teams from '../screens/afterLogin/Teams.js';
+import Dashboard from '../screens/afterLogin/Dashboard';
+import Leagues from '../screens/afterLogin/Leagues';
+import Profile from '../screens/afterLogin/Profile';
+import Stats from '../screens/afterLogin/Stats';
+import Teams from '../screens/afterLogin/Teams';
 
 import { bottomNavStyles } from '../components/bottomNavStyles.js';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { PageLogo } from '../components/styles.js';
+import CustomHeader from '../components/CustomHeader.js';
 
 const dashboardName = 'Home';
 const leaguesName = 'Leagues';
@@ -22,7 +22,6 @@ const statsName = 'Stats';
 const profileName = 'Profile';
 
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
 
 
 export default function BottomNavigation(){
@@ -30,7 +29,7 @@ export default function BottomNavigation(){
       <Tab.Navigator
         initialRouteName={dashboardName}
         screenOptions={({ route }) => ({
-          headerShown:false,
+          header:() => <CustomHeader title={route.name}/>,
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
             const rn = route.name;
