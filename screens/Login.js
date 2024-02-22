@@ -30,7 +30,7 @@ const Login = ({ navigation }) => {
                     <Formik initialValues={{ email: '', password: '' }}
                         onSubmit={(values) => {
                             console.log(values)
-                            navigation.navigate("Home")
+                            navigation.navigate("LoggedIn")
                         }}>
                         {({ handleChange, handleBlur, handleSubmit, values }) => <StyledFormArea>
                             <MyTextInput
