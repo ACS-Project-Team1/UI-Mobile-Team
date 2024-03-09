@@ -32,7 +32,7 @@ export default function App() {
   });
 
   if(!fontsLoaded){
-    return <View/>;
+    return <View><Text>Waiting for fonts to load.</Text></View>;
   }
   return (
     <RootStack/>
