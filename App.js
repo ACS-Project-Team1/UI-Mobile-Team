@@ -16,7 +16,7 @@ import {
   Montserrat_800ExtraBold,
   Montserrat_900Black,
 } from "@expo-google-fonts/montserrat";
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
