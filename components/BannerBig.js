@@ -2,21 +2,16 @@ import { StyleSheet, Text, View } from "react-native";
 import { ImageBackground } from "react-native";
 import CustomButton from "./CustomButton";
 
-export default function BannerBig() {
-    //Dummy data
-    const card_data = {
-        "heading": "Week 12",
-        "Duration":"Jan 15 - Jan 23",
-        "Link to Register":"link",
-        "CoverImage":"link"
-    }
-
+export default function BannerBig({banner_data}) {
+    
+    const cover_image = banner_data.CoverImage
+    
     return(
         <View style={styles.card}>
-            <ImageBackground style={styles.image} resizeMode="cover" source={require("../assets/images/Leagues_cover.png")}>
-            <Text style={styles.heading}>{card_data.heading}</Text>
+            <ImageBackground style={styles.image} resizeMode="cover" source={ { uri: cover_image}}>
+            <Text style={styles.heading}>{banner_data.heading}</Text>
             <View style={styles.inline}>
-                <Text style={styles.caption}>{card_data.Duration}</Text>
+                <Text style={styles.caption}>{banner_data.Duration}</Text>
                 <CustomButton text={"Register"} />
             </View>
             </ImageBackground>
