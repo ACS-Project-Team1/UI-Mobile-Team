@@ -1,6 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
 import { ImageBackground } from "react-native";
+
 import CustomButton from "./CustomButton";
+import { Colors } from "./styles";
 
 export default function BannerBig({banner_data}) {
     
@@ -12,7 +14,7 @@ export default function BannerBig({banner_data}) {
             <Text style={styles.heading}>{banner_data.heading}</Text>
             <View style={styles.inline}>
                 <Text style={styles.caption}>{banner_data.Duration}</Text>
-                <CustomButton text={"Register"} />
+                <CustomButton text={"Register"} color={Colors.register} />
             </View>
             </ImageBackground>
         </View>
@@ -30,7 +32,6 @@ const styles = StyleSheet.create({
     },
     image:{
         flex:1,
-        //justifyContent:'center'
     },
     heading: {
       fontSize: 25,

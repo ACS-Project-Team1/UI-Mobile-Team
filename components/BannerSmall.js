@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, View } from "react-native";
-import StatusTag from "./StatusTag";
 import { TouchableOpacity } from "react-native";
+
+import StatusTag from "./StatusTag";
 
 export default function BannerSmall({banner_data}) {
 
@@ -32,21 +33,16 @@ const styles = StyleSheet.create({
       marginHorizontal:"0%",
       height:70,
       flex:1,
-      //borderWidth:1,
       borderColor:'#B1B2B9',
       borderRadius:"10%",
       padding:'2%',
       paddingHorizontal:'4%'
-
-      
     },
     inline:{
         flexDirection:'row', flexWrap:'wrap',
         justifyContent:'space-between',
     },
     shadowProp: {
-        //borderWidth: 1, // Border width
-        //borderColor: 'gray', // Border color
         borderRadius: 8, // Border radius (optional)
         shadowColor: 'black', // Shadow color
         shadowOffset: { width: -2, height: 0}, // Negative value for outer shadow
@@ -60,7 +56,6 @@ const styles = StyleSheet.create({
         marginVertical:"2%",
         width:"20%",
         height:'80%',
-        //marginHorizontal:"4%"
     },
     titleblock:{
         justifyContent:'center'
