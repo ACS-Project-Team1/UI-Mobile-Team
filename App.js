@@ -16,7 +16,7 @@ import {
   Montserrat_800ExtraBold,
   Montserrat_900Black,
 } from "@expo-google-fonts/montserrat";
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -32,7 +32,7 @@ export default function App() {
   });
 
   if(!fontsLoaded){
-    return <View/>;
+    return <View><Text>Waiting for fonts to load.</Text></View>;
   }
   return (
     <RootStack/>

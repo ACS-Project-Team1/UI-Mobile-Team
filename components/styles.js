@@ -4,6 +4,7 @@ import Constants from "expo-constants";
 
 const StatusBarHeight = Constants.StatusBarHeight;
 
+//Fonts
 const Montserrat_Thin =  'Montserrat_100Thin';
 const Montserrat_ExtraLight = 'Montserrat_200ExtraLight';
 const Montserrat_Light =    'Montserrat_300Light';
@@ -19,7 +20,13 @@ export const Colors = {
     primary: "#008EB0",
     secondary: "#D1EAFB",
     tertiary: " #000000",
-    darkLight: "#75736d"
+    darkLight: "#75736d",
+    success: { backgroundColor: '#DAFFE0', textColor: '#008000' }, // Light and dark green
+    danger: { backgroundColor: '#FFE5E5', textColor: '#8B0000' }, // Light and dark red
+    yellow: { backgroundColor: '#FFFF00', textColor: '#FFD700' }, // Light and dark yellow
+    default: { backgroundColor: '#D3D3D3', textColor: '#000000' }, // Light gray and black
+    register:{backgroundColor: 'white', textColor: 'green'}
+
 };
 
 const { primary, secondary, tertiary, darkLight } = Colors;
