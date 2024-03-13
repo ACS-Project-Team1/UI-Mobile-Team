@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: 30, // Adjust horizontal padding as needed
     paddingVertical: 10, // Adjust vertical padding as needed
-    backgroundColor: '#f2f2f2', // Adjust background color as needed
     paddingTop:50,
   },
   left: {
