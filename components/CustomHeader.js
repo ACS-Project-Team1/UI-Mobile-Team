@@ -29,12 +29,12 @@ const CustomHeader = ({ title }) => {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor:'white',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: 30, // Adjust horizontal padding as needed
     paddingVertical: 10, // Adjust vertical padding as needed
-    backgroundColor: '#f2f2f2', // Adjust background color as needed
     paddingTop:50,
   },
   left: {

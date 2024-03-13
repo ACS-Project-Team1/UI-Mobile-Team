@@ -6,7 +6,7 @@ import StatusTag from "./StatusTag";
 export default function BannerSmall({banner_data}) {
 
     return(
-        <TouchableOpacity style={[styles.card, styles.inline]}>
+        <TouchableOpacity style={[styles.card, styles.inline, styles.shadowProp]}>
             <Image source={{ uri: banner_data.CoverImage }} style={styles.image}></Image>
 
             <View style={styles.titleblock}>
@@ -43,13 +43,11 @@ const styles = StyleSheet.create({
         justifyContent:'space-between',
     },
     shadowProp: {
-        borderRadius: 8, // Border radius (optional)
-        shadowColor: 'black', // Shadow color
-        shadowOffset: { width: -2, height: 0}, // Negative value for outer shadow
-        shadowOpacity: 0.25, // Shadow opacity
-        shadowRadius: 4, // Shadow radius
-        elevation: 5, // Android only: elevation controls the drop shadow
-        padding: 10, // Padding (optional)
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 2,
+        elevation: 5,
       },
     image:{
     
