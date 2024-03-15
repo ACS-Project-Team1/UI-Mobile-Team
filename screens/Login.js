@@ -5,16 +5,14 @@ import { View } from "react-native";
 // formik
 import { Formik } from "formik";
 
-// icons
-import { Octicons, Ionicons } from "@expo/vector-icons"
-
-import { StyledContainer, InnerContainer, PageLogo, SubTitle, StyledFormArea, LeftIcon, StyledInputLabel, StyledTextInput, RightIcon, StyledButton, ButtonText, Colors, MsgBox, ExtraView, ExtraText, TextLink, TextLinkContent } from "../components/styles";
+import { StyledContainer, InnerContainer, PageLogo, SubTitle, StyledFormArea, Colors, StyledButton, ButtonText, ExtraView, ExtraText, TextLink, TextLinkContent } from "../components/styles";
+import { MyTextInput } from "../components/MyTextInput";
 
 // keyboard avoiding view
 import KeyboardAvoidingWrapper from "../components/KeyboardAvoidingWrapper";
 
 // colors
-const { primary, darkLight } = Colors
+const { darkLight } = Colors
 
 const Login = ({ navigation }) => {
     const [hidePassword, setHidePassword] = useState(true);
@@ -30,7 +28,7 @@ const Login = ({ navigation }) => {
                     <Formik initialValues={{ email: '', password: '' }}
                         onSubmit={(values) => {
                             console.log(values)
-                            navigation.navigate("Home")
+                            navigation.navigate("LoggedIn")
                         }}>
                         {({ handleChange, handleBlur, handleSubmit, values }) => <StyledFormArea>
                             <MyTextInput
@@ -46,8 +44,8 @@ const Login = ({ navigation }) => {
                             />
                             <MyTextInput
                                 label="Password"
-                                icon="lock"
-                                placeholder="* * * * * * * *"
+                                icon="lock-closed"
+                                placeholder="•••••••••••••••"
                                 placeholderTextColor={darkLight}
                                 onChangeText={handleChange('password')}
                                 onBlur={handleBlur('password')}
@@ -59,7 +57,7 @@ const Login = ({ navigation }) => {
                             />
                             <StyledButton onPress={handleSubmit}>
                                 <ButtonText>
-                                    Login
+                                    LOGIN
                                 </ButtonText>
                             </StyledButton>
                             <ExtraView>
@@ -74,24 +72,6 @@ const Login = ({ navigation }) => {
             </StyledContainer>
         </KeyboardAvoidingWrapper>
     );
-}
-
-const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePassword, ...props }) => {
-    return (
-        <View>
-            <LeftIcon>
-                <Octicons name={icon} size={30} color={primary} />
-            </LeftIcon>
-            <StyledInputLabel>{label}</StyledInputLabel>
-            <StyledTextInput {...props} />
-            {isPassword && (
-                <RightIcon onPress={() => setHidePassword(!hidePassword)}>
-                    <Ionicons name={hidePassword ? 'eye-off-outline' : 'eye-outline'} size={30} color={darkLight} />
-                </RightIcon>
-            )}
-        </View>
-    )
-
 }
 
 export default Login;

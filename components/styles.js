@@ -1,15 +1,32 @@
-import styled from "styled-components";
+import styled from "styled-components/native";
 import { View, Image, Text, TextInput, TouchableOpacity } from "react-native";
 import Constants from "expo-constants";
 
 const StatusBarHeight = Constants.StatusBarHeight;
+
+//Fonts
+const Montserrat_Thin =  'Montserrat_100Thin';
+const Montserrat_ExtraLight = 'Montserrat_200ExtraLight';
+const Montserrat_Light =    'Montserrat_300Light';
+const Montserrat_Regular =    'Montserrat_400Regular';
+const Montserrat_Medium =    'Montserrat_500Medium';
+const Montserrat_SemiBold  =  'Montserrat_600SemiBold';
+const Montserrat_Bold   = 'Montserrat_700Bold';
+const Montserrat_ExtraBold   = 'Montserrat_800ExtraBold';
+const Montserrat_Black  =  'Montserrat_900Black';
 
 //colors
 export const Colors = {
     primary: "#008EB0",
     secondary: "#D1EAFB",
     tertiary: " #000000",
-    darkLight: "#75736d"
+    darkLight: "#75736d",
+    success: { backgroundColor: '#DAFFE0', textColor: '#008000' }, // Light and dark green
+    danger: { backgroundColor: '#FFE5E5', textColor: '#8B0000' }, // Light and dark red
+    yellow: { backgroundColor: '#FFFF00', textColor: '#FFD700' }, // Light and dark yellow
+    default: { backgroundColor: '#D3D3D3', textColor: '#000000' }, // Light gray and black
+    register:{backgroundColor: 'white', textColor: 'green'}
+
 };
 
 const { primary, secondary, tertiary, darkLight } = Colors;
@@ -18,8 +35,7 @@ export const StyledContainer = styled.View`
 flex : 1;
 padding : 25px;
 padding-top: 90px;
-backgroundColor:white;
-height:100vh;
+margin-bottom:0px;
 `
 
 export const InnerContainer = styled.View`
@@ -27,6 +43,7 @@ export const InnerContainer = styled.View`
     width:100%;
     height:100%;
     align-items:center;
+    background-color:white;
 `;
 
 export const WelcomeContainer = styled(InnerContainer)`
@@ -36,9 +53,15 @@ export const WelcomeContainer = styled(InnerContainer)`
 `;
 
 export const PageLogo = styled.Image`
- margin-top: 20px;
- margin-bottom: 30px;
- margin-right:25px;
+margin-top: 20px;
+margin-bottom: 30px;
+`;
+
+export const WelcomeLogo = styled.Image`
+ margin:5%;
+ flex: 1;
+ width:80%;
+ height:80%;
 `;
 
 export const Avatar = styled.Image`
@@ -58,21 +81,24 @@ export const WelcomeImage = styled.Image`
 `;
 
 export const PageTitle = styled.Text`
+    font-family:${Montserrat_Bold};
     font-size:30px;
     text-align: center;
     font-weight : bold;
     color : ${primary};
     padding:10px;
+    padding-top:40%;
 
     ${(props) => props.welcome && `
-  font-size: 35px;
+  font-size: 27px;
   color : #ffff
     
     `}
 `;
 
 export const SubTitle = styled.Text`
-    font-size:18px;
+    font-family:${Montserrat_Bold};
+    font-size:25px;
     margin-bottom : 20px;
     letter-spacing : 1px;
     font-weight : bold;
@@ -87,40 +113,48 @@ export const SubTitle = styled.Text`
 `;
 
 export const StyledFormArea = styled.View`
-    width : 90%
+    width : 95%
+`;
+
+export const StyledTextBox = styled.View`
+background-color:${secondary};
+display: flex;
+flex-direction: row;
+align-items: center;
+border-radius:50%;
+height:70px;
+justify-content:space-between;
+margin-bottom:5%;
+`;
+
+export const IconAndInput = styled.View`
+ display: flex;
+flex-direction: row;
+align-items: center;
+  
 `;
 
 export const StyledTextInput = styled.TextInput`
-
-background-color : ${secondary};
-padding : 15px;
-padding-left: 55px;
-border-radius : 50px;
-font-size: 16px;
-height:60px;
-margin-vertical : 3px;
-margin-bottom : 10px;
-color : ${darkLight}
+    width:67%;
+    font-size:18px;
 `;
 
 export const StyledInputLabel = styled.Text`
 color : ${tertiary};
 font-size: 13px;
 text-align : left;
+font-family:${Montserrat_Regular};
 `;
 
 export const LeftIcon = styled.View`
-    left : 15px;
-    top:35px;
-    position: absolute;
-    z-index:1;
+    padding-left:10%;
+    padding-right:5%;
 `;
 
 export const RightIcon = styled.TouchableOpacity`
-    right : 15px;
-    top:35px;
-    position: absolute;
-    z-index:1;
+    margin-right:10%;
+    margin-left:0;
+
 `;
 
 export const StyledButton = styled.TouchableOpacity`
@@ -145,8 +179,9 @@ export const StyledButtonHome = styled(StyledButton)`
 `;
 
 export const ButtonText = styled.Text`
+    font-family:${Montserrat_SemiBold};
     color : #ffff;
-    font-size: 16px;
+    font-size: 20px;
     font-weight : 600;
 `;
 
@@ -173,6 +208,7 @@ export const ExtraText = styled.Text`
     align-items: center;
     color : ${tertiary};
     font-size : 16px;
+    font-family:${Montserrat_Regular};
 `;
 
 export const TextLink = styled.TouchableOpacity`
