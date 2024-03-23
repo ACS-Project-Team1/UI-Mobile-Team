@@ -5,6 +5,8 @@ import { ScrollView } from 'react-native';
 import { status } from '../../constants/constant';
 import LeagueData from '../../dummy_data/Leagues_Data.json';
 import BannerBig from '../../components/BannerBig';
+import Table from '../../components/Table';
+import Card from '../../components/Card';
 
 const tableData = [
   ['Rank #', 'Team', 'Total'],
@@ -25,24 +27,9 @@ export default function Dashboard() {
         })
       }
       <Text style={styles.heading}>Top 3 Teams</Text>
-      <View style={styles.tableContainer}>
-        {tableData.map((row, rowIndex) => (
-          <View key={rowIndex} style={[styles.row, rowIndex === 0 && styles.headerRow, rowIndex === tableData.length - 1 && styles.lastRow]}>
-            {row.map((cell, cellIndex) => (
-              <View key={cellIndex} style={[styles.cell, rowIndex === 0 ? styles.headerCell : styles.bodyCell, cellIndex === 1 && rowIndex !== 0 && styles.imageCell]}>
-                {cellIndex === 1 && rowIndex !== 0 && (
-                  <Image source={{ uri: imageLink }} style={styles.image} />
-                )}
-                <Text style={rowIndex === 0 ? styles.headerText : styles.bodyText}>{cell}</Text>
-              </View>
-            ))}
-          </View>
-        ))}
-      </View>
+      <Table tableData={tableData} imageLink={imageLink} styles={styles} />
       <Text style={styles.heading}>Your Stats</Text>
-      <View style={styles.card}>
-      <Text style={styles.cardTitle}>Best Score :90 </Text>
-      </View>
+      <Card title="Best Score: 90" />
     </ScrollView>
   );
 };
