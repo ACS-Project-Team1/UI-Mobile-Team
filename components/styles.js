@@ -26,7 +26,14 @@ export const Colors = {
     danger: { backgroundColor: '#FFE5E5', textColor: '#8B0000' }, // Light and dark red
     yellow: { backgroundColor: '#FFFF00', textColor: '#FFD700' }, // Light and dark yellow
     default: { backgroundColor: '#D3D3D3', textColor: '#000000' }, // Light gray and black
-    register:{backgroundColor: 'white', textColor: 'green'}
+    register:{backgroundColor: 'white', textColor: 'green'},
+    legends:{
+        'Eagle':'green',
+        'Birdie':'#E24955',
+        'Par':'gray',
+        'Bogey':'#379FDC',
+        '2Bogey':'#6E48BE'
+    }
 
 };
 
