@@ -32,7 +32,7 @@ const Signup = ({ navigation }) => {
     };
 
     return (
-        // <KeyboardAvoidingWrapper>
+        <KeyboardAvoidingWrapper>
             <StyledContainer>
                 <StatusBar style="dark" />
                 <InnerContainer>
@@ -100,7 +100,7 @@ const Signup = ({ navigation }) => {
                     </Formik>
                 </InnerContainer>
             </StyledContainer>
-        // </KeyboardAvoidingWrapper>
+        </KeyboardAvoidingWrapper>
     );
 }
 
