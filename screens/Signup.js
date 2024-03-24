@@ -27,13 +27,12 @@ const Signup = ({ navigation }) => {
            
             navigation.navigate("LoggedIn");
         } catch (error) {
-            console.error('Error signing up:', error);
-            setErrorMsg('Error signing up. Please try again.');
+            setErrorMsg(error.response.data);
         }
     };
 
     return (
-        <KeyboardAvoidingWrapper>
+        // <KeyboardAvoidingWrapper>
             <StyledContainer>
                 <StatusBar style="dark" />
                 <InnerContainer>
@@ -44,6 +43,7 @@ const Signup = ({ navigation }) => {
                             handleSignup(values)
                         }}>
                         {({ handleChange, handleBlur, handleSubmit, values }) => <StyledFormArea>
+                            <SubTitle>{errorMsg}</SubTitle>
                             <MyTextInput
                                 label="First Name"
                                 icon="person"
@@ -100,7 +100,7 @@ const Signup = ({ navigation }) => {
                     </Formik>
                 </InnerContainer>
             </StyledContainer>
-        </KeyboardAvoidingWrapper>
+        // </KeyboardAvoidingWrapper>
     );
 }
 
