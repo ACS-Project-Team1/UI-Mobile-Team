@@ -11,11 +11,25 @@ import { StyledContainer, InnerContainer, PageLogo, SubTitle, StyledFormArea, Le
 import KeyboardAvoidingWrapper from "../components/KeyboardAvoidingWrapper";
 import { MyTextInput } from "../components/MyTextInput";
 
+import BaseRequest from "../constants/requests";
+import { BASE_URL } from "../constants/constant";
+
 // colors
 const { primary, darkLight } = Colors
 
 const Signup = ({ navigation }) => {
     const [hidePassword, setHidePassword] = useState(true);
+    const [errorMsg, setErrorMsg] = useState("")
+
+    const handleSignup = async (values) => {
+        try {
+            const response = await BaseRequest.post(`${BASE_URL}/users/registerUser`, {...values, username:values.email});
+           
+            navigation.navigate("LoggedIn");
+        } catch (error) {
+            setErrorMsg(error.response.data);
+        }
+    };
 
     return (
         <KeyboardAvoidingWrapper>
@@ -24,30 +38,29 @@ const Signup = ({ navigation }) => {
                 <InnerContainer>
                     <SubTitle>SIGNUP</SubTitle>
                     <PageLogo resizeMode="cover" source={require('./../assets/images/signup.png')} />
-                    <Formik initialValues={{ fname: '', lname: '', email: '', password: '' }}
-                        onSubmit={(values) => {
-                            console.log(values)
-                            navigation.navigate("LoggedIn")
+                    <Formik initialValues={{ firstName: '', lastName: '', email: '', password: '' }}
+                        onSubmit={(values) => {  
+                            handleSignup(values)
                         }}>
                         {({ handleChange, handleBlur, handleSubmit, values }) => <StyledFormArea>
-
+                            <SubTitle>{errorMsg}</SubTitle>
                             <MyTextInput
                                 label="First Name"
                                 icon="person"
                                 placeholder="Ann"
                                 placeholderTextColor={darkLight}
-                                onChangeText={handleChange('fname')}
-                                onBlur={handleBlur('fname')}
-                                value={values.fname}
+                                onChangeText={handleChange('firstName')}
+                                onBlur={handleBlur('firstName')}
+                                value={values.firstName}
                             />
                             <MyTextInput
                                 label="Last Name"
                                 icon="person"
                                 placeholder="Array"
                                 placeholderTextColor={darkLight}
-                                onChangeText={handleChange('lname')}
-                                onBlur={handleBlur('lname')}
-                                value={values.lname}
+                                onChangeText={handleChange('lastName')}
+                                onBlur={handleBlur('lastName')}
+                                value={values.lastName}
                             />
                             <MyTextInput
                                 label="Email Address"
@@ -79,7 +92,7 @@ const Signup = ({ navigation }) => {
                             </StyledButton>
                             <ExtraView>
                                 <ExtraText>Already have an account?</ExtraText>
-                                <TextLink onPress={() => navigation.navigate("Login")}>
+                                <TextLink onPress={() => handleSignup()}>
                                     <TextLinkContent>Login</TextLinkContent>
                                 </TextLink>
                             </ExtraView>

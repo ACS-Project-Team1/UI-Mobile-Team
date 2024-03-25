@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { StatusBar } from 'expo-status-bar';
-import { View } from "react-native";
 
 // formik
 import { Formik } from "formik";
@@ -10,12 +9,27 @@ import { MyTextInput } from "../components/MyTextInput";
 
 // keyboard avoiding view
 import KeyboardAvoidingWrapper from "../components/KeyboardAvoidingWrapper";
+import BaseRequest from "../constants/requests";
+import { BASE_URL } from "../constants/constant";
+
 
 // colors
 const { darkLight } = Colors
 
 const Login = ({ navigation }) => {
     const [hidePassword, setHidePassword] = useState(true);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const handleLogin = async (values) => {
+        try {
+            const response = await BaseRequest.post(`${BASE_URL}/users/login`, values);
+            setErrorMessage("")
+
+            navigation.navigate("LoggedIn");
+        } catch (error) {
+            setErrorMessage("Incorrect email or password!")
+        }
+    };
 
 
     return (
@@ -27,10 +41,10 @@ const Login = ({ navigation }) => {
                     <PageLogo resizeMode="cover" source={require('./../assets/images/signin.png')} />
                     <Formik initialValues={{ email: '', password: '' }}
                         onSubmit={(values) => {
-                            console.log(values)
-                            navigation.navigate("LoggedIn")
+                            handleLogin(values)
                         }}>
                         {({ handleChange, handleBlur, handleSubmit, values }) => <StyledFormArea>
+                            <SubTitle>{errorMessage}</SubTitle>
                             <MyTextInput
                                 label="Email Address"
                                 icon="mail"
