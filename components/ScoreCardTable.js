@@ -66,7 +66,7 @@ const Table = ({ tableData }) => {
                                             ?<Text>{data}</Text>
                                             :<TextInput
                                             style={{color:'white'}}
-                                            placeholder={data + ' ●'}
+                                            placeholder={data+' ●'}
                                             placeholderTextColor={'white'}
                                             />
                                         }
@@ -185,8 +185,8 @@ const styles = StyleSheet.create({
 
 const tableData = {
     'PAR': Array.from({ length: 18 }, (_, index) => `${index + 1}`),
-    'User1': Array.from({ length: 18 }, (_, index) => `${index + 1}`),
-    'User2': Array.from({ length: 18 }, (_, index) => `${index + 1}`),
+    'User1': Array.from({ length: 18 }, (_, index) => `${5}`),
+    'User2': Array.from({ length: 18 }, (_, index) => `${4}`),
   };
 
 const ScoreCardTable = () => {
