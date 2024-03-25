@@ -11,7 +11,7 @@ export default function Scorecard(){
     const legends = ['Eagle', 'Birdie', 'Par', 'Bogey', '2Bogey']
 
     return(
-        <KeyboardAvoidingWrapper>
+        
         <View style={stylesheet.maintable}>
             <View style={[stylesheet.tableHeader, stylesheet.inline]}>
                 <CircleImage source={dp} size={50} />
@@ -31,7 +31,7 @@ export default function Scorecard(){
 
             <ScoreCardTable />
         </View>
-        </KeyboardAvoidingWrapper>  
+         
         
     )
 }

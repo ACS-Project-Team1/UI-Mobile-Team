@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, StyleSheet, TextInput } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Colors } from './styles';
 import KeyboardAvoidingWrapper from './KeyboardAvoidingWrapper';
@@ -61,7 +61,16 @@ const Table = ({ tableData }) => {
                             
                                 {rowData.map((data, colIndex) => (
                                     <View key={colIndex} style={[styles.cell, user=='PAR'?null:styles.darkCell]}>
-                                        <Text style={user=='PAR'?null:styles.darkCellText} >{data} {user!='PAR' && (<Text>●</Text>)}</Text>
+                                        {
+                                            user=='PAR'
+                                            ?<Text>{data}</Text>
+                                            :<TextInput
+                                            style={{color:'white'}}
+                                            placeholder={data + ' ●'}
+                                            placeholderTextColor={'white'}
+                                            />
+                                        }
+                                        
                                     </View>
                                 ))}
 
