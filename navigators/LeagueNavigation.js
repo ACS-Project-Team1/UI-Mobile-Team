@@ -9,6 +9,9 @@ import Scorecard from '../screens/afterLogin/leagues/Scorecard';
 import LeaderBoard from '../screens/afterLogin/leagues/LeaderBoard';
 import Course from '../screens/afterLogin/leagues/Course';
 import LeagueNavBar from '../components/LeagueNavBar';
+import KeyboardAvoidingWrapper from '../components/KeyboardAvoidingWrapper';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { ScrollView } from 'react-native';
 
 
 const Stack = createNativeStackNavigator()
@@ -39,6 +42,7 @@ function SubLeagueNavigation(){
     const league_data = route.params
 
     return(
+            
         <>
         <LeagueTitle league_data={league_data} />
         <LeagueNavBar />
@@ -53,6 +57,7 @@ function SubLeagueNavigation(){
             <Stack.Screen name='course' component={Course} />
         </Stack.Navigator>
         </>
+            
     )
 }
     

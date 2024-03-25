@@ -22,6 +22,7 @@ export const Colors = {
     tertiary: " #000000",
     darkLight: "#75736d",
     white: "white",
+    darkBlack:'#232C2E',
     success: { backgroundColor: '#DAFFE0', textColor: '#008000' }, // Light and dark green
     danger: { backgroundColor: '#FFE5E5', textColor: '#8B0000' }, // Light and dark red
     yellow: { backgroundColor: '#FFFF00', textColor: '#FFD700' }, // Light and dark yellow
