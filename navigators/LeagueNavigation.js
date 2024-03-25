@@ -42,21 +42,25 @@ function SubLeagueNavigation(){
     const league_data = route.params
 
     return(
-            
-        <>
-        <LeagueTitle league_data={league_data} />
-        <LeagueNavBar />
-        <Stack.Navigator
-        screenOptions={{
-            headerShown:false
-        }}
-        initialRouteName='scorecard'
-        >
-            <Stack.Screen name='scorecard' component={Scorecard} />
-            <Stack.Screen name='leaderboard' component={LeaderBoard} />
-            <Stack.Screen name='course' component={Course} />
-        </Stack.Navigator>
-        </>
+        
+            <View style={{flex:1}} >
+                <LeagueTitle league_data={league_data} />
+                <LeagueNavBar />
+                
+                <Stack.Navigator
+                screenOptions={{
+                    headerShown:false
+                }}
+                initialRouteName='scorecard'
+                >
+                    <Stack.Screen name='scorecard' component={Scorecard} />
+                    <Stack.Screen name='leaderboard' component={LeaderBoard} />
+                    <Stack.Screen name='course' component={Course} />
+                </Stack.Navigator> 
+                
+                
+            </View>
+        
             
     )
 }
