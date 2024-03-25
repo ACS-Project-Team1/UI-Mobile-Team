@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { StatusBar } from 'expo-status-bar';
+import * as Yup from 'yup';
 
 // formik
 import { Formik } from "formik";
@@ -11,6 +12,7 @@ import { MyTextInput } from "../components/MyTextInput";
 import KeyboardAvoidingWrapper from "../components/KeyboardAvoidingWrapper";
 import BaseRequest from "../constants/requests";
 import { BASE_URL } from "../constants/constant";
+import { View, Text } from "react-native";
 
 
 // colors
@@ -19,6 +21,11 @@ const { darkLight } = Colors
 const Login = ({ navigation }) => {
     const [hidePassword, setHidePassword] = useState(true);
     const [errorMessage, setErrorMessage] = useState("");
+
+    const validationSchema = Yup.object().shape({
+        email: Yup.string().email('Invalid email format').required('Email is required'),
+        password: Yup.string().required('Password is required'),
+      });
 
     const handleLogin = async (values) => {
         try {
@@ -42,9 +49,18 @@ const Login = ({ navigation }) => {
                     <Formik initialValues={{ email: '', password: '' }}
                         onSubmit={(values) => {
                             handleLogin(values)
-                        }}>
-                        {({ handleChange, handleBlur, handleSubmit, values }) => <StyledFormArea>
-                            <SubTitle>{errorMessage}</SubTitle>
+                         
+                        }}
+                        validationSchema={validationSchema}
+                        validateOnBlur
+                        
+                        >
+                        {({ handleChange, handleBlur, handleSubmit, values, errors, touched }) => <StyledFormArea>
+                            {/* <SubTitle>{errorMessage}</SubTitle> */}
+                            <View>
+  <Text style={{ color: 'red' }}>{errorMessage}</Text>
+
+</View>
                             <MyTextInput
                                 label="Email Address"
                                 icon="mail"
@@ -54,6 +70,7 @@ const Login = ({ navigation }) => {
                                 onBlur={handleBlur('email')}
                                 value={values.email}
                                 keyboardType="email-address"
+                                errorMessage={touched.email && errors.email}
 
                             />
                             <MyTextInput
