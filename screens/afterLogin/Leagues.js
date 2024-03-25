@@ -6,6 +6,7 @@ import BannerBig from '../../components/BannerBig';
 import BannerSmall from '../../components/BannerSmall';
 import LeagueData from '../../dummy_data/Leagues_Data.json';
 import { status } from '../../constants/constant'; 
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 
 export default function Leagues(){

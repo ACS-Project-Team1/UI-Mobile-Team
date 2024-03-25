@@ -2,11 +2,12 @@ import { Image, StyleSheet, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native";
 
 import StatusTag from "./StatusTag";
+import { useNavigation } from "@react-navigation/native";
 
-export default function BannerSmall({banner_data}) {
-
+export default function BannerSmall({banner_data}) {        
+    const navigation = useNavigation();                                                        
     return(
-        <TouchableOpacity style={[styles.card, styles.inline, styles.shadowProp]}>
+        <TouchableOpacity onPress={() => navigation.navigate('individualLeague',banner_data)} style={[styles.card, styles.inline, styles.shadowProp]}>
             <Image source={{ uri: banner_data.CoverImage }} style={styles.image}></Image>
 
             <View style={styles.titleblock}>
