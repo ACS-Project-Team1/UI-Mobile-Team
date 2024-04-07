@@ -1,8 +1,13 @@
 import axios from 'axios';
 
+const token = () =>{
+
+  return localStorage.getItem("token")
+}
+
 export const DEFAULT_HEADERS = {
   headers: {
-    // 'Authorization': `${token()}`,
+    'Authorization': `Bearer ${token()}`,
     'Content-Type': 'application/json',
   },
 };
@@ -25,9 +30,12 @@ class BaseRequest {
     return axios.post(url, data, headers)
   }
 
-  static getAuthenticated(url, headers){
- 
-    return axios.get(url, headers)
+  static getAuthenticated(url){
+  
+    return axios.get(url, {  headers: {
+      'Authorization': `Bearer ${token()}`,
+      'Content-Type': 'application/json',
+    },})
   }
 
   static patch(url, data, response) {
