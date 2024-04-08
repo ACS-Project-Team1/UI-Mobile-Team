@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, ScrollView, StyleSheet, TextInput } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Colors } from './styles';
-import KeyboardAvoidingWrapper from './KeyboardAvoidingWrapper';
 
 const Table = ({ tableData }) => {
 
@@ -64,11 +63,14 @@ const Table = ({ tableData }) => {
                                         {
                                             user=='PAR'
                                             ?<Text>{data}</Text>
-                                            :<TextInput
+                                            :<View style={{flexDirection:'row'}}>
+                                              <TextInput
                                             style={{color:'white'}}
-                                            placeholder={data+' ●'}
+                                            placeholder={data}
                                             placeholderTextColor={'white'}
                                             />
+                                            <Text style={{color:'green'}}> ●</Text>
+                                            </View>
                                         }
                                         
                                     </View>
