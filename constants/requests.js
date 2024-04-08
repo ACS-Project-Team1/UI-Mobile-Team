@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const token = () =>{
 
-  return localStorage.getItem("token")
+  // return localStorage.getItem("token")
 }
 
 export const DEFAULT_HEADERS = {

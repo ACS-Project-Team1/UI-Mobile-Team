@@ -1,15 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native';
 
 import BannerBig from '../../components/BannerBig';
 import BannerSmall from '../../components/BannerSmall';
 import LeagueData from '../../dummy_data/Leagues_Data.json';
-import { status } from '../../constants/constant'; 
+import { BASE_URL, status } from '../../constants/constant'; 
 import { useNavigation, useRoute } from '@react-navigation/native';
+import BaseRequest from '../../constants/requests';
 
 
 export default function Leagues(){
+  useEffect(()=>{
+    const getAllLeagues = async() => {
+      const response = await BaseRequest.get(`${BASE_URL}/leagues/getAllLeagues`)
+      console.log(response)
+
+    }
+
+    getAllLeagues()
+
+  }, [])
+
   console.log(status)
   return (
     <ScrollView style={styles.container}>
