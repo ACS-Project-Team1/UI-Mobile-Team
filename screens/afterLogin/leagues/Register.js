@@ -21,7 +21,6 @@ export default function RegisterLeague(){
     };
 
     const teamItems = Teams.map((team,index) => ({
-        key: index.toString(),
         label: team.teamName,
         value: JSON.stringify(team),
       }));
@@ -122,7 +121,12 @@ const styles = StyleSheet.create({
 const pickerSelectStyles = {
     inputIOS: {
       
-      fontSize: 25,borderColor:'#B1B2B9',borderWidth:'1px',marginVertical:'5%', padding:'5%',borderRadius:'10px'
+      fontSize: 25,
+      borderColor: "#B1B2B9",
+      borderWidth: 1,
+      marginVertical: 5, // Changed from "5%" to 5
+      padding: 5, // Changed from "5%" to 5
+      borderRadius: 10,
       // Add or override iOS styles here
     },
     inputAndroid: {
@@ -130,7 +134,6 @@ const pickerSelectStyles = {
       // Add or override Android styles here
     },
     placeholder: {
-      ...RNPickerSelect.defaultProps.placeholder,
       color: 'gray', // Placeholder color
       fontSize: 25, // Placeholder font size
     },
