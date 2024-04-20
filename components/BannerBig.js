@@ -3,10 +3,12 @@ import { ImageBackground } from "react-native";
 
 import CustomButton from "./CustomButton";
 import { Colors } from "./styles";
+import { useNavigation } from "@react-navigation/native";
 
 export default function BannerBig({banner_data}) {
     
     const cover_image = banner_data.CoverImage
+    const navigation = useNavigation()
     
     return(
         <View style={styles.card}>
@@ -14,7 +16,7 @@ export default function BannerBig({banner_data}) {
             <Text style={styles.heading}>{banner_data.heading}</Text>
             <View style={styles.inline}>
                 <Text style={styles.caption}>{banner_data.Duration}</Text>
-                <CustomButton text={"Register"} color={Colors.register} />
+                <CustomButton text={"Register"} color={Colors.register} onPress={()=>navigation.navigate('registerLeague',banner_data)} />
             </View>
             </ImageBackground>
         </View>

@@ -12,6 +12,7 @@ import LeagueNavBar from '../components/LeagueNavBar';
 import KeyboardAvoidingWrapper from '../components/KeyboardAvoidingWrapper';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { ScrollView } from 'react-native';
+import RegisterLeague from '../screens/afterLogin/leagues/Register';
 
 
 const Stack = createNativeStackNavigator()
@@ -75,6 +76,7 @@ export default function LeagueNavigation(){
             initialRouteName="Leaguesmain"
         >
             <Stack.Screen name="Leaguesmain" component={Leagues} />
+            <Stack.Screen name="registerLeague" component={RegisterLeague} />
             <Stack.Screen name="individualLeague" component={SubLeagueNavigation} />
         </Stack.Navigator>
     )
