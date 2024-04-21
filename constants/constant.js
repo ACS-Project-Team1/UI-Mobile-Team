@@ -1,5 +1,5 @@
 export const status = {  
-    UPCOMING : "Upcoming",  
+    UPCOMING : "UPCOMING",  
     PLAYING:"Playing",  
     OVERDUE:"Overdue"  
     }
