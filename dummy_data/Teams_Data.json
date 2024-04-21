@@ -1,0 +1,20 @@
+[
+    {
+      "teamName": "Ghost Riders",
+      "dpUrl": "https://golf.com/wp-content/uploads/2023/11/driver.jpg?width=1280",
+      "PlayerOne":"eagle07",
+      "PlayerTwo":"Birdie123"
+    },
+    {
+        "teamName": "Super Stars",
+        "dpUrl": "https://golf.com/wp-content/uploads/2023/11/driver.jpg?width=1280",
+        "PlayerOne":"eagle07",
+        "PlayerTwo":"sherlock124"
+      },
+      {
+        "teamName": "Birdies",
+        "dpUrl": "https://golf.com/wp-content/uploads/2023/11/driver.jpg?width=1280",
+        "PlayerOne":"eagle07",
+        "PlayerTwo":"eastern23"
+      }
+]

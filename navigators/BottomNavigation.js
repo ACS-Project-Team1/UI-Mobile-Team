@@ -15,6 +15,7 @@ import { bottomNavStyles } from '../components/bottomNavStyles.js';
 import { PageLogo } from '../components/styles.js';
 import CustomHeader from '../components/CustomHeader.js';
 import LeagueNavigation from './LeagueNavigation.js';
+import TeamsNavigation from './TeamsNavigation.js';
 
 const dashboardName = 'Home';
 const leaguesName = 'Leagues';
@@ -66,7 +67,7 @@ export default function BottomNavigation(){
         })}
       >
         <Tab.Screen name={dashboardName} component={Dashboard} />
-        <Tab.Screen name={teamsName} component={Teams} />
+        <Tab.Screen name={teamsName} component={TeamsNavigation} />
         <Tab.Screen name={leaguesName} component={LeagueNavigation} />
         <Tab.Screen name={statsName} component={Stats} />
         <Tab.Screen name={profileName} component={Profile} />
