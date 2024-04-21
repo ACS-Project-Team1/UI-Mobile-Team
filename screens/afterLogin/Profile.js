@@ -33,18 +33,18 @@ export default function Profile() {
   // Function to split the userId into two lines based on a character limit
   const splitUserId = (userId) => {
     const maxLength = 15;
-    if (userId.length <= maxLength) {
+    if (userId?.length <= maxLength) {
       return userId;
     } else {
-      const firstLine = userId.substring(0, maxLength);
-      const secondLine = userId.substring(maxLength);
+      const firstLine = userId?.substring(0, maxLength);
+      const secondLine = userId?.substring(maxLength);
       return `${firstLine}\n${secondLine}`;
     }
   }
 
   // Function to handle copying the User ID to the clipboard
   const copyUserIdToClipboard = () => {
-    Clipboard.setString(profileDetails.userId);
+    Clipboard.setString(profileDetails?.userId);
     Alert.alert(
       'User ID Copied',
       'The User ID has been copied to the clipboard',
