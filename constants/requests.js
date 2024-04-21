@@ -30,10 +30,10 @@ class BaseRequest {
     return axios.post(url, data, headers)
   }
 
-  static getAuthenticated(url){
+  static getAuthenticated(url, token){
   
     return axios.get(url, {  headers: {
-      'Authorization': `Bearer ${token()}`,
+      'Authorization': `Bearer ${token}`,
       'Content-Type': 'application/json',
     },})
   }
