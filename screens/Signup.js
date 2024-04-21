@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { StatusBar } from 'expo-status-bar';
+import React, { useState, useEffect } from "react";
+import { StatusBar, Alert } from 'react-native';
 import { View } from "react-native";
 
 // formik
@@ -19,13 +19,32 @@ const { primary, darkLight } = Colors
 
 const Signup = ({ navigation }) => {
     const [hidePassword, setHidePassword] = useState(true);
-    const [errorMsg, setErrorMsg] = useState("")
+    const [errorMsg, setErrorMsg] = useState("");
+    const initialValues = { firstName: '', lastName: '', email: '', password: '' };
 
-    const handleSignup = async (values) => {
+    useEffect(() => {
+        const unsubscribe = navigation.addListener('focus', () => {
+            // Reset form values when the component mounts
+            setErrorMsg("");
+        });
+
+        return unsubscribe;
+    }, [navigation]);
+
+    const handleSignup = async (values, formikActions) => {
         try {
             const response = await BaseRequest.post(`${BASE_URL}/users/registerUser`, {...values, username:values.email});
-           
-            navigation.navigate("LoggedIn");
+            Alert.alert(
+                "Sign Up Successful",
+                "You can now login using your credentials.",
+                [
+                    { text: "OK", onPress: () => {
+                        // Clear form values upon successful signup
+                        formikActions.resetForm();
+                        navigation.navigate("Login");
+                    }}
+                ]
+            );
         } catch (error) {
             setErrorMsg(error.response.data);
         }
@@ -38,9 +57,9 @@ const Signup = ({ navigation }) => {
                 <InnerContainer>
                     <SubTitle>SIGNUP</SubTitle>
                     <PageLogo resizeMode="cover" source={require('./../assets/images/signup.png')} />
-                    <Formik initialValues={{ firstName: '', lastName: '', email: '', password: '' }}
-                        onSubmit={(values) => {  
-                            handleSignup(values)
+                    <Formik initialValues={initialValues}
+                        onSubmit={(values, actions) => {  
+                            handleSignup(values, actions);
                         }}>
                         {({ handleChange, handleBlur, handleSubmit, values }) => <StyledFormArea>
                             <SubTitle>{errorMsg}</SubTitle>
@@ -92,7 +111,7 @@ const Signup = ({ navigation }) => {
                             </StyledButton>
                             <ExtraView>
                                 <ExtraText>Already have an account?</ExtraText>
-                                <TextLink onPress={() => handleSignup()}>
+                                <TextLink onPress={() => navigation.navigate("Login")}>
                                     <TextLinkContent>Login</TextLinkContent>
                                 </TextLink>
                             </ExtraView>
@@ -103,6 +122,5 @@ const Signup = ({ navigation }) => {
         </KeyboardAvoidingWrapper>
     );
 }
-
 
 export default Signup;
