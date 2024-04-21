@@ -5,6 +5,7 @@ const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
+  const [userId, setUserId] = useState(null)
   const [tokenUpdated, setTokenUpdated] = useState(null);
 
   useEffect(() => {
@@ -23,7 +24,8 @@ const AuthProvider = ({ children }) => {
     return unsubscribe;
   }, []);
 
-  const login = async (customToken) => {
+  const login = async (customToken, userId) => {
+    setUserId(userId)
     try {
       await signInWithCustomToken(auth, customToken);
     } catch (error) {
@@ -32,7 +34,7 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ login, token, tokenUpdated }}>
+    <AuthContext.Provider value={{ login, token, tokenUpdated, userId }}>
       {children}
     </AuthContext.Provider>
   );

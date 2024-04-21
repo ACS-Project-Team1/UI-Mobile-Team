@@ -20,13 +20,14 @@ const { darkLight } = Colors
 const Login = ({ navigation }) => {
     const [hidePassword, setHidePassword] = useState(true);
     const [errorMessage, setErrorMessage] = useState("");
-    const {login} = useContext(AuthContext);
+    const { login } = useContext(AuthContext);
 
     const handleLogin = async (values) => {
         try {
             const response = await BaseRequest.post(`${BASE_URL}/users/login`, values);
             setErrorMessage("")
-            login(response.data.token)
+
+            login(response.data.token, response.data.userId)
 
             navigation.navigate("LoggedIn");
         } catch (error) {
