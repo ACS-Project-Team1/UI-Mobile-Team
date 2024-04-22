@@ -36,14 +36,15 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  useEffect(()=>{
-    if(userId){
+  useEffect(() => {
+    if (userId) {
       getProfileDetails()
 
     }
-  }, [userId])
+  }, [userId, tokenUpdated])
 
   const getProfileDetails = async () => {
+    console.log("getting profile", tokenUpdated, userId)
     try {
       const response = await BaseRequest.getAuthenticated(`${BASE_URL}/users/getUser/${userId}`, tokenUpdated);
 
@@ -51,7 +52,7 @@ const AuthProvider = ({ children }) => {
 
       setProfileDetails(response.data)
     } catch (error) {
-      setErrorMsg(error.response.data);
+      console.log(error)
     }
   }
 

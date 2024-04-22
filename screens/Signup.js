@@ -56,7 +56,7 @@ const Signup = ({ navigation }) => {
                 <StatusBar style="dark" />
                 <InnerContainer>
                     <SubTitle>SIGNUP</SubTitle>
-                    <PageLogo resizeMode="cover" source={require('./../assets/images/signup.png')} />
+                    {/* <PageLogo resizeMode="cover" source={require('./../assets/images/signup.png')} /> */}
                     <Formik initialValues={initialValues}
                         onSubmit={(values, actions) => {  
                             handleSignup(values, actions);
