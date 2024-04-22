@@ -3,16 +3,16 @@ import Table from "../../../components/Table";
 
 const tableDataPlayers = [
     ['Rank #', 'Player', 'Total', 'Handicap'],
-    ['#1', 'Noah', '50', '50'],
-    ['#2', 'Max', '50', '50'],
-    ['#3', 'Ryan', '50', '50'],
+    ['#1', 'Clyan', '150', '80'],
+    ['#2', 'Max', '110', '60'],
+    ['#3', 'Ryan', '100', '50'],
 ];
 
 const tableDataTeams = [
     ['Rank #', 'Team', 'Total', 'Handicap'],
-    ['#1', 'Rockstar', '50', '50'],
-    ['#2', 'Herm', '50', '50'],
-    ['#3', 'Nepal', '50', '50'],
+    ['#1', 'Nepal', '470', '198'],
+    ['#2', 'Herm', '450', '176'],
+    ['#3', 'Rockstar', '350', '150'],
 ];
 
 
