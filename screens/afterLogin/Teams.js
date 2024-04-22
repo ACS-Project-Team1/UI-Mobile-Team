@@ -6,6 +6,8 @@ import TeamsData from '../../dummy_data/Teams_Data.json'
 import TeamsBanner from '../../components/TeamsBanner';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../../context/AuthProvider';
+import BaseRequest from '../../constants/requests';
+import { BASE_URL } from '../../constants/constant';
 
 export default function Teams(){
 
@@ -16,8 +18,9 @@ export default function Teams(){
   useEffect(()=> {
     const fetchData = async () => {
       try {
-        const response = await BaseRequest.get(`${BASE_URL}/users/getLeagues/${userId}`);
+        const response = await BaseRequest.get(`${BASE_URL}/users/getTeams/${userId}`);
         console.log(response.data)
+        setYourTeams(response.data)
       } catch (error) {
         console.error("Error fetching leagues:", error);
       }
@@ -26,7 +29,7 @@ export default function Teams(){
     if (isFocused) {
       fetchData();
     }
-  }, [isFocused, yourTeams]);
+  }, [isFocused]);
 
 
 
@@ -44,7 +47,8 @@ export default function Teams(){
       <View style={styles.teamsContainer}>
         <Text style={styles.heading}>Your Teams</Text>
         <View style={{height:'10%'}} />
-        {TeamsData.length!==0 && TeamsData.map((team, id) => (
+        {yourTeams.length===0 && <Text>No Teams created</Text>}
+        {yourTeams.length!==0 && yourTeams.map((team, id) => (
           <>
           <TeamsBanner key={id} banner_data={team} />
           </>

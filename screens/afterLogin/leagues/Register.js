@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Button, StyleSheet, Text } from "react-native";
 import { View } from "react-native";
 import { TextInput } from "react-native";
 import CustomButton from "../../../components/CustomButton";
 import { Colors } from "../../../components/styles";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useIsFocused, useNavigation, useRoute } from "@react-navigation/native";
 import { Icon } from "react-native-elements";
 import { Ionicons } from "@expo/vector-icons"
 import Teams from '../../../dummy_data/Teams_Data.json'
 import RNPickerSelect from "react-native-picker-select";
+import { AuthContext } from "../../../context/AuthProvider";
 
 
 export default function RegisterLeague(){
@@ -20,10 +21,32 @@ export default function RegisterLeague(){
         console.log("Form submitted");
     };
 
-    const teamItems = Teams.map((team,index) => ({
-        label: team.teamName,
-        value: JSON.stringify(team),
-      }));
+    
+
+      const [yourTeams, setYourTeams] = useState([])
+      const isFocused = useIsFocused();
+      const {userId} = useContext(AuthContext)
+    
+      useEffect(()=> {
+        const fetchData = async () => {
+          try {
+            const response = await BaseRequest.get(`${BASE_URL}/users/getTeams/${userId}`);
+            console.log(response.data)
+            setYourTeams(response.data)
+          } catch (error) {
+            console.error("Error fetching leagues:", error);
+          }
+        }
+    
+        if (isFocused) {
+          fetchData();
+        }
+      }, [isFocused]);
+
+    const teamItems = yourTeams.map((team,index) => ({
+      label: team.teamName,
+      value: JSON.stringify(team),
+    }));
 
     const navigation = useNavigation()
     const route = useRoute()
