@@ -30,7 +30,7 @@ export default function CreateTeam(){
             "dpUrl":dpUrl,
             "players":[userId, player2Id]
         }
-
+        
         const response = await BaseRequest.post(`${BASE_URL}/teams/createTeam`,req_data)
         console.log(response.status)
         if(response.status===201){
