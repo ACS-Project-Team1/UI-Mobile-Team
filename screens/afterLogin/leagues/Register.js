@@ -10,12 +10,18 @@ import { Ionicons } from "@expo/vector-icons"
 import Teams from '../../../dummy_data/Teams_Data.json'
 import RNPickerSelect from "react-native-picker-select";
 import { AuthContext } from "../../../context/AuthProvider";
+import BaseRequest from "../../../constants/requests";
+import { BASE_URL } from "../../../constants/constant";
 
 
 export default function RegisterLeague(){
 
     const [teamName, setTeamName] = useState("");
     
+    const navigation = useNavigation()
+    const route = useRoute()
+    const league_data = route.params
+
     const handleSubmit = () => {
         // Handle form submission here
         console.log("Form submitted");
@@ -23,34 +29,41 @@ export default function RegisterLeague(){
 
     
 
-      const [yourTeams, setYourTeams] = useState([])
-      const isFocused = useIsFocused();
-      const {userId} = useContext(AuthContext)
-    
-      useEffect(()=> {
-        const fetchData = async () => {
-          try {
-            const response = await BaseRequest.get(`${BASE_URL}/users/getTeams/${userId}`);
-            console.log(response.data)
-            setYourTeams(response.data)
-          } catch (error) {
-            console.error("Error fetching leagues:", error);
-          }
+    const [yourTeams, setYourTeams] = useState([])
+    const isFocused = useIsFocused();
+    const {userId} = useContext(AuthContext)
+  
+    useEffect(()=> {
+      const fetchData = async () => {
+        try {
+          const response = await BaseRequest.get(`${BASE_URL}/users/getTeams/${userId}`);
+          console.log(response.data)
+          setYourTeams(response.data)
+        } catch (error) {
+          console.error("Error fetching leagues:", error);
         }
-    
-        if (isFocused) {
-          fetchData();
-        }
-      }, [isFocused]);
+      }
+  
+      if (isFocused) {
+        fetchData();
+      }
+    }, [isFocused]);
 
     const teamItems = yourTeams.map((team,index) => ({
       label: team.teamName,
       value: JSON.stringify(team),
     }));
 
-    const navigation = useNavigation()
-    const route = useRoute()
-    const league_data = route.params
+    
+
+    const handleRegister = async () => {
+      try{
+        const response = await BaseRequest.get(`${BASE_URL}/leagues/joinLeague/${leagueID}/${userId}`)
+      }
+      catch(e){
+        
+      }
+    }
 
     return(
         <View style={styles.container}>
@@ -79,7 +92,7 @@ export default function RegisterLeague(){
             </View>
             
             <View style={styles.buttonContainer}>
-                <CustomButton text="SUBMIT" color={Colors.theme} onPress={()=>navigation.navigate('Leaguesmain')}/>
+                <CustomButton text="SUBMIT" color={Colors.theme} onPress={handleRegister}/>
             </View>
             
         </View>
