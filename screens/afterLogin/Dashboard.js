@@ -1,49 +1,50 @@
-//dashboard page
-import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
-import { ScrollView } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
-import { BASE_URL, status } from '../../constants/constant';
-import LeagueData from '../../dummy_data/Leagues_Data.json';
 import BannerBig from '../../components/BannerBig';
-import Table from '../../components/Table';
-import Card from '../../components/Card';
+// import Card from '../../components/Card';
+import { BASE_URL, status } from '../../constants/constant';
 import BaseRequest from '../../constants/requests';
-
-const tableData = [
-  ['Rank #', 'Team', 'Total'],
-  ['#1', 'Birdies', '50'],
-  ['#2', 'Birdies', '50'],
-  ['#3', 'Birdies', '50'],
-];
-
-const imageLink = "https://img.freepik.com/free-photo/closeup-scarlet-macaw-from-side-view-scarlet-macaw-closeup-head_488145-3540.jpg?w=826&t=st=1710281012~exp=1710281612~hmac=48d755763cf719d702a2b9cfffd9f1ad244fb8e8e6205d7197c202f01d13cef1"
+import { AuthContext } from '../../context/AuthProvider';
 
 export default function Dashboard() {
-  const [upcomingLeagues, setUpcomingLeagues] = useState([])
+  const [upcomingLeagues, setUpcomingLeagues] = useState([]);
+  const { profileDetails } = useContext(AuthContext);
 
   useEffect(() => {
     const getAllLeagues = async () => {
-      const response = await BaseRequest.get(`${BASE_URL}/leagues/getAllLeagues`)
+      const response = await BaseRequest.get(`${BASE_URL}/leagues/getAllLeagues`);
       const upcomingLeaguesResponse = response.data.filter(league => league.status === status.UPCOMING);
       setUpcomingLeagues(upcomingLeaguesResponse);
     }
-    getAllLeagues()
+    getAllLeagues();
 
-  }, [])
+  }, []);
+
+
+  const Card = ({ title, text }) => (
+    <View style={styles.card}>
+      <Text style={styles.cardTitle}>{title}</Text>
+      <Text>{text}</Text>
+    </View>
+  );
 
   return (
     <ScrollView style={styles.container}>
-      <Text style={styles.heading}>Upcoming Leagues</Text>
-      {
-        upcomingLeagues.length > 0 ?
-          <BannerBig key={upcomingLeagues[0].heading} banner_data={upcomingLeagues[0]} /> :
-          <Text style={{ marginTop: "5%" }}>There are no upcoming leagues currently. </Text>
+      <Text style={styles.heading}>Hello {profileDetails.firstName},</Text>
+      <Text style={styles.welcomeText}>Welcome to <Text style={styles.appName}>Golf Pro</Text>! Get ready to elevate your golf game to new heights! Join leagues, form teams, and dominate the leaderboard.</Text>
+      
+      <Text style={styles.subHeading}>Upcoming Leagues</Text>
+      {upcomingLeagues.length > 0 ?
+        <BannerBig key={upcomingLeagues[0].heading} banner_data={upcomingLeagues[0]} /> :
+        <Text style={{ marginTop: 10, marginBottom: 20 }}>There are no upcoming leagues currently. </Text>
       }
-      <Text style={styles.heading}>Top 3 Teams</Text>
-      <Table tableData={tableData} imageLink={imageLink} styles={styles} />
-      <Text style={styles.heading}>Your Stats</Text>
-      <Card title="Best Score: 90" />
+
+      <Text style={styles.subHeading}>Golf Tips</Text>
+      <View style={styles.cardContainer}>
+        <Card title="Tip #1" text="Improve your swing by focusing on your tempo and rhythm." />
+        <Card title="Tip #2" text="Practice your short game to lower your scores on the course." />
+      </View>
     </ScrollView>
   );
 };
@@ -51,73 +52,50 @@ export default function Dashboard() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: "5%",
-    paddingVertical: "5%",
-  },
-  card: {
-    backgroundColor: 'white',
-    marginVertical: "3%",
-    marginHorizontal: "0%",
-    height: 70,
-    flex: 1,
-    borderColor: '#B1B2B9',
-    borderRadius: "10%",
-    padding: '2%',
-    paddingHorizontal: '4%'
-  },
-  cardTitle: {
-    fontWeight: 'normal',
-    fontSize: 16
+    paddingHorizontal: 15,
+    paddingVertical: 15,
   },
   heading: {
     fontSize: 24,
     fontWeight: 'bold',
+    marginBottom: 15,
+    marginTop:10,
+    fontFamily: "Montserrat_700Bold",
   },
-  tableContainer: {
-    padding: 5,
+  userName: {
+    color: '#008EB0',
+  },
+  welcomeText: {
+    fontSize: 16,
+    marginBottom: 20,
+    fontFamily: "Montserrat",
+  },
+  appName: {
+    color: '#008EB0',
+  },
+  subHeading: {
+    fontSize: 20,
+    fontWeight: 'bold',
     marginTop: 20,
-    marginBottom: 30,
+    marginBottom: 10,
+  },
+  cardContainer: {
+    marginTop: 10,
+  },
+  card: {
+    backgroundColor: '#FFF',
+    padding: 15,
     borderRadius: 10,
-    backgroundColor: 'white',
-    // Card shadow
+    marginBottom: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.2,
     shadowRadius: 2,
-    elevation: 5,
+    elevation: 3,
   },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderBottomWidth: 1,
-    borderBottomColor: '#B9B3B3',
-  },
-  lastRow: {
-    borderBottomWidth: 0,
-  },
-  cell: {
-    borderWidth: 1,
-    borderColor: 'transparent',
-    alignItems: "center",
-    padding: 10,
-    flex: 1,
-  },
-  bodyCell: {
-    backgroundColor: 'white',
-  },
-  imageCell: {
-    flexDirection: 'row',
-  },
-  headerText: {
+  cardTitle: {
+    fontSize: 18,
     fontWeight: 'bold',
-  },
-  bodyText: {
-    fontWeight: 'normal',
-  },
-  image: {
-    width: 25,
-    height: 25,
-    borderRadius: 12.5,
-    marginRight: 15,
+    marginBottom: 5,
   },
 });
