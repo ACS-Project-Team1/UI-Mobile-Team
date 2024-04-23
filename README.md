@@ -1,6 +1,11 @@
-# UI-Mobile-Team React Native Project
+# Golf Pro : Digitalizing Golfing Experience
 
-Welcome to the UI-Mobile-Team React Native project! This README provides instructions on setting up and running the project on your local machine.
+Welcome to the UI-Mobile-Team React Native project! This project aims to digitalize the team creation, league registration and maintaining scorecards on cloud.
+
+![Golf Image](./UI-Designs/GolfproCover.png)
+
+
+This README provides instructions on setting up and running the project on your local machine.
 
 ## Prerequisites
 
