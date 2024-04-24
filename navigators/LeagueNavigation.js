@@ -42,6 +42,8 @@ function SubLeagueNavigation(){
     const route = useRoute()
     const league_data = route.params
 
+    console.log(league_data, "inside leagues")
+
     return(
         
             <View style={{flex:1}} >
@@ -54,7 +56,7 @@ function SubLeagueNavigation(){
                 }}
                 initialRouteName='scorecard'
                 >
-                    <Stack.Screen name='scorecard' component={Scorecard} />
+                    <Stack.Screen name='scorecard' component={Scorecard} initialParams={{ league_data }} />
                     <Stack.Screen name='leaderboard' component={LeaderBoard} />
                     <Stack.Screen name='course' component={Course} />
                 </Stack.Navigator> 

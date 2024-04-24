@@ -9,7 +9,10 @@ const CustomHeader = ({ title }) => {
       <View style={styles.left}>
         <Avatar
           rounded
-          source={require('../assets/images/userDP.png')} // Replace with the path to your avatar image
+          source={{
+            uri: 'https://img.freepik.com/free-photo/business-woman-posing-street_23-2148213512.jpg?w=2000&t=st=1713571764~exp=1713572364~hmac=184f3fb01492a6cd6d2cb8c93c373e4ff10c049806deef86939276c41f86b9b8',
+          }}
+          // source={require('../assets/images/userDP.png')} // Replace with the path to your avatar image
           size="medium" // Adjust the size of the avatar
         />
       </View>

@@ -46,7 +46,7 @@ const Signup = ({ navigation }) => {
                 ]
             );
         } catch (error) {
-            setErrorMsg(error.response.data);
+            setErrorMsg(error);
         }
     };
 

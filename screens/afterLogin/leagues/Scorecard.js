@@ -6,10 +6,12 @@ import dp from '../../../assets/images/userDP2.webp';
 import { Colors } from "../../../components/styles";
 import ScoreCardTable from "../../../components/ScoreCardTable";
 
-
-export default function Scorecard(){
+export default function Scorecard({route}){
 
     const legends = ['Eagle', 'Birdie', 'Par', 'Bogey', '2Bogey']
+    const { league_data } = route.params;
+
+    // console.log(league_data?.teams[0]?.players)
 
     return(
         <KeyboardAwareScrollView
@@ -19,7 +21,7 @@ export default function Scorecard(){
                 <View style={[stylesheet.tableHeader, stylesheet.inline]}>
                     <CircleImage source={dp} size={50} />
                     <View style={stylesheet.headerText}>
-                        <Text style={stylesheet.teamName}>Team Name</Text>
+                        <Text style={stylesheet.teamName}>{league_data?.teams[0]?.teamName}</Text>
                         <Text style={stylesheet.subtitle}>Subtitle</Text>
                     </View>
                 </View>

@@ -10,7 +10,8 @@ export default function TeamsBanner({banner_data}) {
             <View style={styles.titleblock}>
                 <Text style={styles.heading}>{banner_data.teamName}</Text>
                 <Text style={[styles.subtitle, {color:'blue',fontWeight:'bold'}]}>Players</Text>
-                <Text style={styles.subtitle}>@{banner_data.PlayerOne}, @{banner_data.PlayerTwo}</Text>
+                <Text style={styles.subtitle}>@{banner_data.players[0].firstName}, @{banner_data.players[0].firstName}</Text>
+                
             </View>
 
         </TouchableOpacity>
